@@ -46,6 +46,8 @@ namespace CrewManagerDemo
 
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
+                    if (i == 0) roster.Clear();
+
                     AppointmentGroup ag = new AppointmentGroup();
                     ag.GroupTitle = dataTable.Rows[i].ItemArray[0].ToString();
                     ag.GroupId = i+1;
@@ -103,6 +105,7 @@ namespace CrewManagerDemo
                 ag.Add(ap);
             }
 
+            tasks.Clear();
             tasks.Add(ag);
 
             Invalidate();

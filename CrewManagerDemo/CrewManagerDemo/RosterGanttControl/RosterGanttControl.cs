@@ -246,10 +246,11 @@ namespace RosterGantt
 
         private void OnSelectedAppointmentChanged()
         {
-            if (this.selectedAppointment != null && (((this.rowSelectMode ^ RowSelectionType.Appointment) & RowSelectionType.Appointment) == RowSelectionType.None))
+            //if (this.selectedAppointment != null && (((this.rowSelectMode ^ RowSelectionType.Appointment) & RowSelectionType.Appointment) == RowSelectionType.None))
+            if(this.selectedAppointment != null && (this.rowSelectMode == RowSelectionType.ALL || this.rowSelectMode == RowSelectionType.ALL))
             {
                 this.SelectedGroupId = selectedAppointment.GroupId;
-            }
+            }     
         }
 
         #endregion
@@ -553,8 +554,11 @@ namespace RosterGantt
             lblTip = new Label();
             lblTip.Visible = false;
             lblTip.AutoSize = true;
-            lblTip.BackColor = System.Drawing.SystemColors.Window;
-            lblTip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //lblTip.BackColor = System.Drawing.SystemColors.Window;
+            lblTip.BackColor = Color.FromArgb(95, 0, 0, 0);//Roger
+            lblTip.ForeColor = Color.FromArgb(255, 255, 255);
+            lblTip.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            
             lblTip.MaximumSize = new System.Drawing.Size(200, 400);
             lblTip.MinimumSize = new System.Drawing.Size(100, 25);
             lblTip.Padding = new System.Windows.Forms.Padding(5);
