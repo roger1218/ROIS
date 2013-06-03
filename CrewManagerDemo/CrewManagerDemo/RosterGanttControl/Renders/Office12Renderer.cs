@@ -77,7 +77,7 @@ namespace RosterGantt
             using (Pen pen = new Pen(color))
             {
                 g.DrawLine(pen, rect.X, rect.Top, rect.X, rect.Height);
-                g.DrawLine(pen, rect.X, rect.Height - 1, rect.Right, rect.Height - 1);
+                g.DrawLine(pen, rect.X, rect.Height, rect.Right, rect.Height);
             }
 
             using (SolidBrush brush = new SolidBrush(color))

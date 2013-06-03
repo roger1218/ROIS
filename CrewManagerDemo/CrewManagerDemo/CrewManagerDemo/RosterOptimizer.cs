@@ -74,6 +74,8 @@ namespace CrewManagerDemo
                 roster.Add(ag1);
             }
             openFileDialog1.Dispose();
+
+            Invalidate();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -102,6 +104,8 @@ namespace CrewManagerDemo
             }
 
             tasks.Add(ag);
+
+            Invalidate();
         }
     }
 }

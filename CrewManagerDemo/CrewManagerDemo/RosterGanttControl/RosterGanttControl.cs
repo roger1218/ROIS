@@ -764,6 +764,18 @@ namespace RosterGantt
 
         private void DrawRow(PaintEventArgs e, Rectangle rect, int groupId)
         {
+            //Roger
+            if (rect.Y < this.topHeight)
+            {
+                Rectangle drawArea = rect;
+                drawArea.Y = this.topHeight;
+                e.Graphics.SetClip(drawArea);
+            }
+            else
+            {
+                e.Graphics.SetClip(rect);
+            }
+
             #region old
 
             renderer.DrawDayBackground(e.Graphics, rect);
@@ -795,9 +807,7 @@ namespace RosterGantt
 
                 renderer.DrawHourRange(e.Graphics, selectionRectangle, false, true);
             }
-
-            e.Graphics.SetClip(rect);
-
+            
             for (int hour = 0; hour < this.totalHour * 2; hour++)
             {
                 int x = rect.Left + (hour * halfHourWidth) - hScrollbar.Value;
@@ -809,12 +819,24 @@ namespace RosterGantt
                     break;
             }
 
-            e.Graphics.ResetClip();
-
             DrawAppointments(e, rect, groupId);
+
+            e.Graphics.ResetClip();
 
             rect.X = 0;
             rect.Width += this.leftWidth;
+
+            //Roger
+            if (rect.Y < this.topHeight)
+            {
+                Rectangle drawArea = rect;
+                drawArea.Y = this.topHeight;
+                e.Graphics.SetClip(drawArea);
+            }
+            else
+            {
+                e.Graphics.SetClip(rect);
+            }
 
             if (groupId == this.selectedGroupId)
             {
@@ -823,6 +845,8 @@ namespace RosterGantt
             }
 
             renderer.DrawGroupHeader(e.Graphics, rect, this.leftWidth, this.cachedAppointmentGroups[groupId].GroupTitle);
+
+            e.Graphics.ResetClip();
         }
 
         private void DrawAppointments(PaintEventArgs e, Rectangle rect, int groupId)
@@ -900,12 +924,14 @@ namespace RosterGantt
                     view.Appointment = appItem;
 
                     appointmentViews[appItem] = view;
-
-                    e.Graphics.SetClip(rect);
-
+                    
+                    //Roger
+                    //e.Graphics.SetClip(rect);
+                    double tempHeight = appRect.Height * 0.8;
+                    appRect.Height = (int)tempHeight;
                     renderer.DrawAppointment(e.Graphics, appRect, appItem, appItem == SelectedAppointment, appointmentGripHeight,this.ShowPercent);
 
-                    e.Graphics.ResetClip();
+                    //e.Graphics.ResetClip();
 
                     drawnItems.Add(appItem);
                 }

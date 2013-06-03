@@ -88,16 +88,15 @@
             // 
             drawTool2.RosterGanttView = this.rosterGanttControl2;
             this.rosterGanttControl2.ActiveTool = drawTool2;
-            this.rosterGanttControl1.AllowInplaceEditing = false;
             this.rosterGanttControl2.AppointmentParallel = 5;
             this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rosterGanttControl2.EnableTooltip = true;
             this.rosterGanttControl2.LeftWidth = 100;
             this.rosterGanttControl2.Location = new System.Drawing.Point(0, 0);
+            this.rosterGanttControl2.MarkWorkTime = false;
             this.rosterGanttControl2.Name = "rosterGanttControl2";
             this.rosterGanttControl2.RowPageSize = 1;
-            this.rosterGanttControl2.RowSelectMode = ((RosterGantt.RosterGanttControl.RowSelectionType)(((RosterGantt.RosterGanttControl.RowSelectionType.Header | RosterGantt.RosterGanttControl.RowSelectionType.Cell)
-            | RosterGantt.RosterGanttControl.RowSelectionType.Appointment)));
+            this.rosterGanttControl2.RowSelectMode = RosterGantt.RosterGanttControl.RowSelectionType.Appointment;
             this.rosterGanttControl2.SelectedAppointment = null;
             this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.SelectionGroup = 0;
