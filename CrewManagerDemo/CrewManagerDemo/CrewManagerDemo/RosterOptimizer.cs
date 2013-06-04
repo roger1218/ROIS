@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using RosterGantt;
+using MetroFramework;
 
 namespace CrewManagerDemo
 {
-    public partial class RosterOptimizer : Form
+    public partial class RosterOptimizer : MetroFramework.Forms.MetroForm
     {
         List<AppointmentGroup> roster = new List<AppointmentGroup>();
         List<AppointmentGroup> tasks = new List<AppointmentGroup>();

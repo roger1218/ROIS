@@ -78,7 +78,7 @@
             this.rosterGanttControl1.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.SelectionGroup = 0;
             this.rosterGanttControl1.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.Size = new System.Drawing.Size(898, 363);
+            this.rosterGanttControl1.Size = new System.Drawing.Size(898, 398);
             this.rosterGanttControl1.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.TabIndex = 0;
             this.rosterGanttControl1.Text = "rosterGanttControl1";
@@ -102,7 +102,7 @@
             this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.SelectionGroup = 0;
             this.rosterGanttControl2.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.Size = new System.Drawing.Size(898, 189);
+            this.rosterGanttControl2.Size = new System.Drawing.Size(898, 208);
             this.rosterGanttControl2.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.TabIndex = 0;
             this.rosterGanttControl2.Text = "rosterGanttControl2";
@@ -165,7 +165,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1272, 608);
+            this.splitContainer1.Size = new System.Drawing.Size(1272, 661);
             this.splitContainer1.SplitterDistance = 350;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -174,7 +174,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 608);
+            this.groupBox1.Size = new System.Drawing.Size(350, 661);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Scenarios";
@@ -185,7 +185,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(918, 608);
+            this.groupBox2.Size = new System.Drawing.Size(918, 661);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Unnamed Scenario 1";
@@ -196,10 +196,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 17);
+            this.tabControl1.Location = new System.Drawing.Point(3, 16);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(912, 588);
+            this.tabControl1.Size = new System.Drawing.Size(912, 642);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -208,7 +208,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(904, 562);
+            this.tabPage1.Size = new System.Drawing.Size(904, 616);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Crew & Plannings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -227,8 +227,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.rosterGanttControl2);
-            this.splitContainer2.Size = new System.Drawing.Size(898, 556);
-            this.splitContainer2.SplitterDistance = 363;
+            this.splitContainer2.Size = new System.Drawing.Size(898, 610);
+            this.splitContainer2.SplitterDistance = 398;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabPage2
@@ -236,7 +236,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(904, 567);
+            this.tabPage2.Size = new System.Drawing.Size(904, 611);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Parameters";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -246,7 +246,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(904, 567);
+            this.tabPage3.Size = new System.Drawing.Size(904, 611);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Summary Statistics";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -257,9 +257,9 @@
             // 
             // RosterOptimizer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 633);
+            this.ClientSize = new System.Drawing.Size(1272, 686);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "RosterOptimizer";
