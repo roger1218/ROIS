@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using RosterGantt;
 using MetroFramework;
+using MetroFramework.Forms;
 
 namespace CrewManagerDemo
 {
@@ -110,6 +111,11 @@ namespace CrewManagerDemo
             tasks.Add(ag);
 
             Invalidate();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            MetroTaskWindow.ShowTaskWindow(this, "SubControl in TaskWindow", new TaskWindowControl(), 10);
         }
     }
 }

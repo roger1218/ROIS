@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            RosterGantt.DrawTool drawTool1 = new RosterGantt.DrawTool();
-            RosterGantt.DrawTool drawTool2 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool3 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool4 = new RosterGantt.DrawTool();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RosterOptimizer));
             this.rosterGanttControl1 = new RosterGantt.RosterGanttControl();
             this.rosterGanttControl2 = new RosterGantt.RosterGanttControl();
@@ -39,6 +39,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,6 +53,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -62,8 +65,8 @@
             // 
             // rosterGanttControl1
             // 
-            drawTool1.RosterGanttView = this.rosterGanttControl1;
-            this.rosterGanttControl1.ActiveTool = drawTool1;
+            drawTool3.RosterGanttView = this.rosterGanttControl1;
+            this.rosterGanttControl1.ActiveTool = drawTool3;
             this.rosterGanttControl1.AllowInplaceEditing = false;
             this.rosterGanttControl1.AppointmentParallel = 1;
             this.rosterGanttControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,7 +81,7 @@
             this.rosterGanttControl1.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.SelectionGroup = 0;
             this.rosterGanttControl1.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.Size = new System.Drawing.Size(898, 398);
+            this.rosterGanttControl1.Size = new System.Drawing.Size(870, 311);
             this.rosterGanttControl1.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.TabIndex = 0;
             this.rosterGanttControl1.Text = "rosterGanttControl1";
@@ -86,8 +89,8 @@
             // 
             // rosterGanttControl2
             // 
-            drawTool2.RosterGanttView = this.rosterGanttControl2;
-            this.rosterGanttControl2.ActiveTool = drawTool2;
+            drawTool4.RosterGanttView = this.rosterGanttControl2;
+            this.rosterGanttControl2.ActiveTool = drawTool4;
             this.rosterGanttControl2.AllowInplaceEditing = false;
             this.rosterGanttControl2.AppointmentParallel = 5;
             this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -102,7 +105,7 @@
             this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.SelectionGroup = 0;
             this.rosterGanttControl2.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.Size = new System.Drawing.Size(898, 208);
+            this.rosterGanttControl2.Size = new System.Drawing.Size(870, 163);
             this.rosterGanttControl2.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.TabIndex = 0;
             this.rosterGanttControl2.Text = "rosterGanttControl2";
@@ -114,9 +117,9 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(20, 60);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1272, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1232, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -155,7 +158,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(20, 85);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -165,19 +168,40 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1272, 661);
-            this.splitContainer1.SplitterDistance = 350;
+            this.splitContainer1.Size = new System.Drawing.Size(1232, 530);
+            this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 1;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.metroButton1);
+            this.groupBox1.Controls.Add(this.metroComboBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 661);
+            this.groupBox1.Size = new System.Drawing.Size(338, 530);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Scenarios";
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(6, 42);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(58, 21);
+            this.metroButton1.TabIndex = 0;
+            this.metroButton1.Text = "New";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(70, 42);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(262, 29);
+            this.metroComboBox1.TabIndex = 1;
+            this.metroComboBox1.UseSelectable = true;
             // 
             // groupBox2
             // 
@@ -185,7 +209,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(918, 661);
+            this.groupBox2.Size = new System.Drawing.Size(890, 530);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Unnamed Scenario 1";
@@ -196,10 +220,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 16);
+            this.tabControl1.Location = new System.Drawing.Point(3, 17);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(912, 642);
+            this.tabControl1.Size = new System.Drawing.Size(884, 510);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -208,7 +232,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(904, 616);
+            this.tabPage1.Size = new System.Drawing.Size(876, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Crew & Plannings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -227,8 +251,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.rosterGanttControl2);
-            this.splitContainer2.Size = new System.Drawing.Size(898, 610);
-            this.splitContainer2.SplitterDistance = 398;
+            this.splitContainer2.Size = new System.Drawing.Size(870, 478);
+            this.splitContainer2.SplitterDistance = 311;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabPage2
@@ -236,7 +260,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(904, 611);
+            this.tabPage2.Size = new System.Drawing.Size(876, 489);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Parameters";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -246,7 +270,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(904, 611);
+            this.tabPage3.Size = new System.Drawing.Size(876, 489);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Summary Statistics";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -257,12 +281,13 @@
             // 
             // RosterOptimizer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 686);
+            this.ClientSize = new System.Drawing.Size(1272, 633);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "RosterOptimizer";
+            this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 18);
             this.Text = "RosterOptimizer";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -270,6 +295,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -299,5 +325,8 @@
         private RosterGantt.RosterGanttControl rosterGanttControl1;
         private RosterGantt.RosterGanttControl rosterGanttControl2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
     }
 }
