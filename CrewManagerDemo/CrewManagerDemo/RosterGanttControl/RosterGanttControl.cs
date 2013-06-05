@@ -11,8 +11,10 @@ namespace RosterGantt
     {
         #region Private Members
 
-        private System.Windows.Forms.VScrollBar vScrollbar;
-        private System.Windows.Forms.HScrollBar hScrollbar;
+        //private System.Windows.Forms.VScrollBar vScrollbar;
+        //private System.Windows.Forms.HScrollBar hScrollbar;
+        private MetroFramework.Controls.MetroScrollBar vScrollbar;
+        private MetroFramework.Controls.MetroScrollBar hScrollbar;
         private System.Windows.Forms.TextBox editbox;
         private System.Windows.Forms.Label lblTip;
 
@@ -511,14 +513,17 @@ namespace RosterGantt
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.Selectable, true);
 
-            hScrollbar = new HScrollBar();
+            //hScrollbar = new HScrollBar();
+            hScrollbar = new MetroFramework.Controls.MetroScrollBar(MetroFramework.Controls.MetroScrollOrientation.Horizontal);
+            hScrollbar.Style = MetroFramework.MetroColorStyle.Black;
             hScrollbar.SmallChange = halfHourWidth;
             hScrollbar.LargeChange = halfHourWidth * 2;
             hScrollbar.Dock = DockStyle.Bottom;
             hScrollbar.Visible = true;
             hScrollbar.Scroll += new ScrollEventHandler(hScrollbar_Scroll);
 
-            vScrollbar = new VScrollBar();
+            //vScrollbar = new VScrollBar();
+            vScrollbar = new MetroFramework.Controls.MetroScrollBar(MetroFramework.Controls.MetroScrollOrientation.Vertical);
             vScrollbar.SmallChange = 1;//rowHeight;
             vScrollbar.LargeChange = 2;// rowHeight * 2;
             vScrollbar.Dock = DockStyle.Right;
