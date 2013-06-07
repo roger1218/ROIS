@@ -30,10 +30,12 @@ namespace CrewManagerDemo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            RosterGantt.DrawTool drawTool1 = new RosterGantt.DrawTool();
-            RosterGantt.DrawTool drawTool2 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool11 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool12 = new RosterGantt.DrawTool();
             this.rosterGanttControl1 = new RosterGantt.RosterGanttControl();
             this.rosterGanttControl2 = new RosterGantt.RosterGanttControl();
+            this.metroLable1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLable2 = new MetroFramework.Controls.MetroLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
@@ -63,8 +65,8 @@ namespace CrewManagerDemo
             // 
             // rosterGanttControl1
             // 
-            drawTool1.RosterGanttView = this.rosterGanttControl1;
-            this.rosterGanttControl1.ActiveTool = drawTool1;
+            drawTool11.RosterGanttView = this.rosterGanttControl1;
+            this.rosterGanttControl1.ActiveTool = drawTool11;
             this.rosterGanttControl1.AllowInplaceEditing = false;
             this.rosterGanttControl1.AppointmentParallel = 1;
             this.rosterGanttControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -87,8 +89,8 @@ namespace CrewManagerDemo
             // 
             // rosterGanttControl2
             // 
-            drawTool2.RosterGanttView = this.rosterGanttControl2;
-            this.rosterGanttControl2.ActiveTool = drawTool2;
+            drawTool12.RosterGanttView = this.rosterGanttControl2;
+            this.rosterGanttControl2.ActiveTool = drawTool12;
             this.rosterGanttControl2.AllowInplaceEditing = false;
             this.rosterGanttControl2.AppointmentParallel = 5;
             this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -108,6 +110,27 @@ namespace CrewManagerDemo
             this.rosterGanttControl2.TabIndex = 0;
             this.rosterGanttControl2.Text = "rosterGanttControl2";
             this.rosterGanttControl2.ResolveAppointments += new RosterGantt.ResolveAppointmentsEventHandler(this.rosterGanttControl2_ResolveAppointments);
+            // 
+            // metroLable1
+            // 
+            this.metroLable1.BackColor = System.Drawing.Color.Transparent;
+            this.metroLable1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLable1.Location = new System.Drawing.Point(6, 11);
+            this.metroLable1.Name = "metroLable1";
+            this.metroLable1.Size = new System.Drawing.Size(100, 23);
+            this.metroLable1.TabIndex = 2;
+            this.metroLable1.Text = "Scenarios";
+            this.metroLable1.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // metroLable2
+            // 
+            this.metroLable2.AutoSize = true;
+            this.metroLable2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLable2.Location = new System.Drawing.Point(10, -4);
+            this.metroLable2.Name = "metroLable2";
+            this.metroLable2.Size = new System.Drawing.Size(65, 19);
+            this.metroLable2.TabIndex = 3;
+            this.metroLable2.Text = "Unamed";
             // 
             // splitContainer1
             // 
@@ -130,6 +153,7 @@ namespace CrewManagerDemo
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.metroButton1);
+            this.groupBox1.Controls.Add(this.metroLable1);
             this.groupBox1.Controls.Add(this.metroComboBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -137,7 +161,6 @@ namespace CrewManagerDemo
             this.groupBox1.Size = new System.Drawing.Size(338, 601);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Scenarios";
             // 
             // metroButton1
             // 
@@ -161,13 +184,13 @@ namespace CrewManagerDemo
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.metroTabControl1);
+            this.groupBox2.Controls.Add(this.metroLable2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(890, 601);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Unnamed Scenario 1";
             // 
             // metroTabControl1
             // 
@@ -225,7 +248,7 @@ namespace CrewManagerDemo
             this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.metroTabPage2.Size = new System.Drawing.Size(876, 518);
+            this.metroTabPage2.Size = new System.Drawing.Size(876, 543);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Parameters";
             this.metroTabPage2.UseVisualStyleBackColor = true;
@@ -241,7 +264,7 @@ namespace CrewManagerDemo
             this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.metroTabPage3.Size = new System.Drawing.Size(876, 518);
+            this.metroTabPage3.Size = new System.Drawing.Size(876, 543);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Summary Statistics";
             this.metroTabPage3.UseVisualStyleBackColor = true;
@@ -275,6 +298,7 @@ namespace CrewManagerDemo
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -303,5 +327,7 @@ namespace CrewManagerDemo
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
+        private MetroFramework.Controls.MetroLabel metroLable1;
+        private MetroFramework.Controls.MetroLabel metroLable2;
     }
 }

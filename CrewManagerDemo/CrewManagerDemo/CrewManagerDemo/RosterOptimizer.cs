@@ -17,6 +17,8 @@ namespace CrewManagerDemo
         List<AppointmentGroup> roster = new List<AppointmentGroup>();
         List<AppointmentGroup> tasks = new List<AppointmentGroup>();
 
+        List<String> scenarios = new List<String>();
+
         public RosterOptimizer()
         {
             InitializeComponent();
@@ -115,7 +117,10 @@ namespace CrewManagerDemo
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            MetroTaskWindow.ShowTaskWindow(this, "SubControl in TaskWindow", new TaskWindowControl(), 10);
+            TaskWindowControl taskWindowControl1 = new TaskWindowControl();
+            taskWindowControl1.Location = new System.Drawing.Point(200, 200);
+            taskWindowControl1.ParentForm.StartPosition = FormStartPosition.CenterScreen;
+            MetroTaskWindow.ShowTaskWindow(this, "SubControl in TaskWindow", taskWindowControl1);
         }
     }
 }
