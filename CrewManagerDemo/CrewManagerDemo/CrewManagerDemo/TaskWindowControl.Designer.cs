@@ -40,6 +40,7 @@
             this.metroTile1.TabIndex = 0;
             this.metroTile1.Text = "metroTile1";
             this.metroTile1.UseSelectable = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // TaskWindowControl
             // 

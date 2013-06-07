@@ -14,5 +14,10 @@ namespace CrewManagerDemo
         {
             InitializeComponent();
         }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

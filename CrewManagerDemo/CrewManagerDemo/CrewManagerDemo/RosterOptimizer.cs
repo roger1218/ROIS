@@ -117,10 +117,10 @@ namespace CrewManagerDemo
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            TaskWindowControl taskWindowControl1 = new TaskWindowControl();
-            taskWindowControl1.Location = new System.Drawing.Point(200, 200);
-            taskWindowControl1.ParentForm.StartPosition = FormStartPosition.CenterScreen;
-            MetroTaskWindow.ShowTaskWindow(this, "SubControl in TaskWindow", taskWindowControl1);
+            Point location = this.metroButton1.PointToScreen(this.metroButton1.Location);
+            location.Y += 50;
+            MetroTaskWindow.ShowTaskWindow(this, "New Scenario", new TaskWindowControl(), location);
+
         }
     }
 }
