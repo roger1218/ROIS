@@ -119,8 +119,11 @@ namespace CrewManagerDemo
         {
             Point location = this.metroButton1.PointToScreen(this.metroButton1.Location);
             location.Y += 50;
-            MetroTaskWindow.ShowTaskWindow(this, "New Scenario", new TaskWindowControl(), location);
+            MetroDialogWindow test = new MetroDialogWindow(this);
+            test.StartPosition = FormStartPosition.Manual;
+            test.Location = location;
 
+            test.ShowDialog();
         }
     }
 }
