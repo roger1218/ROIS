@@ -69,6 +69,7 @@
     <Compile Include="RosterOptimizer.Designer.cs">
       <DependentUpon>RosterOptimizer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\CrewListParser.cs" />
     <Compile Include="Tools\CSVHelper.cs" />
     <EmbeddedResource Include="MetroDialogWindow.resx">
       <DependentUpon>MetroDialogWindow.cs</DependentUpon>

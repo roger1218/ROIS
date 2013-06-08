@@ -18,6 +18,8 @@ namespace CrewManagerDemo
         List<AppointmentGroup> tasks = new List<AppointmentGroup>();
 
         List<String> scenarios = new List<String>();
+        private MetroDialogWindow metroDialogWindow1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
 
         public RosterOptimizer()
         {
@@ -47,37 +49,6 @@ namespace CrewManagerDemo
                 string fileName = this.openFileDialog1.FileName;
                 CSVHelper csvHelper = new CSVHelper(fileName);
                 DataTable dataTable = csvHelper.Read();
-
-                for (int i = 0; i < dataTable.Rows.Count; i++)
-                {
-                    if (i == 0) roster.Clear();
-
-                    AppointmentGroup ag = new AppointmentGroup();
-                    ag.GroupTitle = dataTable.Rows[i].ItemArray[0].ToString();
-                    ag.GroupId = i+1;
-
-                    if (ag.GroupTitle.Contains("Roger"))
-                    {
-                        Appointment ap = new Appointment()
-                        {
-                            Title = "Task " + i.ToString(),
-                            GroupId = i + 1,
-                            StartTime = DateTime.Today.AddHours(14).AddMinutes(40),
-                            EndTime = DateTime.Today.AddHours(16).AddMinutes(15),
-                            Percent = 0.7f,
-                            Tooltip = "Task " + i.ToString() + "\n\r" + DateTime.Today.AddHours(14).AddMinutes(40).ToShortTimeString()
-                        };
-                        ag.Add(ap);
-
-                        ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(9), endTime = DateTime.Today.AddHours(15) });
-                        ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(17), endTime = DateTime.Today.AddHours(18) });
-                    }
-                    
-                    roster.Add(ag);
-                }
-
-                AppointmentGroup ag1 = new AppointmentGroup();
-                roster.Add(ag1);
             }
             openFileDialog1.Dispose();
 
@@ -111,19 +82,60 @@ namespace CrewManagerDemo
 
             tasks.Clear();
             tasks.Add(ag);
-
-            Invalidate();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            if (metroDialogWindow1 == null)
+            {
+                metroDialogWindow1 = new MetroDialogWindow(this);
+            }
+
             Point location = this.metroButton1.PointToScreen(this.metroButton1.Location);
             location.Y += 50;
-            MetroDialogWindow test = new MetroDialogWindow(this);
-            test.StartPosition = FormStartPosition.Manual;
-            test.Location = location;
+            metroDialogWindow1.StartPosition = FormStartPosition.Manual;
+            metroDialogWindow1.Location = location;
 
-            test.ShowDialog();
+            metroDialogWindow1.SaveDialogEvents += new MetroDialogWindow.SaveDialog(newScenario);
+
+            metroDialogWindow1.ShowDialog();
+        }
+
+        private void newScenario(string scenarioName, string crewFileName, string pairingFileName, DataTable crewList)
+        {
+            this.metroComboBox1.Items.Add(scenarioName);
+            this.metroComboBox1.Text = scenarioName;
+            this.metroLable2.Text = scenarioName;
+
+            for (int i = 0; i < crewList.Rows.Count; i++)
+            {
+                if (i == 0) roster.Clear();
+
+                AppointmentGroup ag = new AppointmentGroup();
+                ag.GroupTitle = crewList.Rows[i].ItemArray[0].ToString();
+                ag.GroupId = i + 1;
+
+                //if (ag.GroupTitle.Contains("Roger"))
+                //{
+                //    Appointment ap = new Appointment()
+                //    {
+                //        Title = "Task " + i.ToString(),
+                //        GroupId = i + 1,
+                //        StartTime = DateTime.Today.AddHours(14).AddMinutes(40),
+                //        EndTime = DateTime.Today.AddHours(16).AddMinutes(15),
+                //        Percent = 0.7f,
+                //        Tooltip = "Task " + i.ToString() + "\n\r" + DateTime.Today.AddHours(14).AddMinutes(40).ToShortTimeString()
+                //    };
+                //    ag.Add(ap);
+
+                //    ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(9), endTime = DateTime.Today.AddHours(15) });
+                //    ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(17), endTime = DateTime.Today.AddHours(18) });
+                //}
+
+                roster.Add(ag);
+            }
+
+            this.rosterGanttControl1.Invalidate();
         }
     }
 }
