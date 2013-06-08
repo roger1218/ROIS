@@ -30,8 +30,8 @@ namespace CrewManagerDemo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            RosterGantt.DrawTool drawTool11 = new RosterGantt.DrawTool();
-            RosterGantt.DrawTool drawTool12 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool3 = new RosterGantt.DrawTool();
+            RosterGantt.DrawTool drawTool4 = new RosterGantt.DrawTool();
             this.rosterGanttControl1 = new RosterGantt.RosterGanttControl();
             this.rosterGanttControl2 = new RosterGantt.RosterGanttControl();
             this.metroLable1 = new MetroFramework.Controls.MetroLabel();
@@ -65,8 +65,8 @@ namespace CrewManagerDemo
             // 
             // rosterGanttControl1
             // 
-            drawTool11.RosterGanttView = this.rosterGanttControl1;
-            this.rosterGanttControl1.ActiveTool = drawTool11;
+            drawTool3.RosterGanttView = this.rosterGanttControl1;
+            this.rosterGanttControl1.ActiveTool = drawTool3;
             this.rosterGanttControl1.AllowInplaceEditing = false;
             this.rosterGanttControl1.AppointmentParallel = 1;
             this.rosterGanttControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -81,7 +81,7 @@ namespace CrewManagerDemo
             this.rosterGanttControl1.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.SelectionGroup = 0;
             this.rosterGanttControl1.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.Size = new System.Drawing.Size(870, 348);
+            this.rosterGanttControl1.Size = new System.Drawing.Size(870, 317);
             this.rosterGanttControl1.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl1.TabIndex = 0;
             this.rosterGanttControl1.Text = "rosterGanttControl1";
@@ -89,8 +89,8 @@ namespace CrewManagerDemo
             // 
             // rosterGanttControl2
             // 
-            drawTool12.RosterGanttView = this.rosterGanttControl2;
-            this.rosterGanttControl2.ActiveTool = drawTool12;
+            drawTool4.RosterGanttView = this.rosterGanttControl2;
+            this.rosterGanttControl2.ActiveTool = drawTool4;
             this.rosterGanttControl2.AllowInplaceEditing = false;
             this.rosterGanttControl2.AppointmentParallel = 5;
             this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -105,7 +105,7 @@ namespace CrewManagerDemo
             this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.SelectionGroup = 0;
             this.rosterGanttControl2.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.Size = new System.Drawing.Size(870, 185);
+            this.rosterGanttControl2.Size = new System.Drawing.Size(870, 169);
             this.rosterGanttControl2.StartTime = new System.DateTime(((long)(0)));
             this.rosterGanttControl2.TabIndex = 0;
             this.rosterGanttControl2.Text = "rosterGanttControl2";
@@ -115,9 +115,9 @@ namespace CrewManagerDemo
             // 
             this.metroLable1.BackColor = System.Drawing.Color.Transparent;
             this.metroLable1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLable1.Location = new System.Drawing.Point(6, 11);
+            this.metroLable1.Location = new System.Drawing.Point(6, 10);
             this.metroLable1.Name = "metroLable1";
-            this.metroLable1.Size = new System.Drawing.Size(100, 23);
+            this.metroLable1.Size = new System.Drawing.Size(100, 21);
             this.metroLable1.TabIndex = 2;
             this.metroLable1.Text = "Scenarios";
             this.metroLable1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -136,7 +136,7 @@ namespace CrewManagerDemo
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(20, 65);
+            this.splitContainer1.Location = new System.Drawing.Point(20, 60);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -146,7 +146,7 @@ namespace CrewManagerDemo
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1232, 601);
+            this.splitContainer1.Size = new System.Drawing.Size(1232, 555);
             this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -158,15 +158,15 @@ namespace CrewManagerDemo
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(338, 601);
+            this.groupBox1.Size = new System.Drawing.Size(338, 555);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(6, 46);
+            this.metroButton1.Location = new System.Drawing.Point(6, 42);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(58, 23);
+            this.metroButton1.Size = new System.Drawing.Size(58, 21);
             this.metroButton1.TabIndex = 0;
             this.metroButton1.Text = "New";
             this.metroButton1.UseSelectable = true;
@@ -175,7 +175,7 @@ namespace CrewManagerDemo
             // metroComboBox1
             // 
             this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(70, 46);
+            this.metroComboBox1.Location = new System.Drawing.Point(70, 42);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(262, 29);
             this.metroComboBox1.TabIndex = 1;
@@ -188,7 +188,7 @@ namespace CrewManagerDemo
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(890, 601);
+            this.groupBox2.Size = new System.Drawing.Size(890, 555);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -201,7 +201,7 @@ namespace CrewManagerDemo
             this.metroTabControl1.Location = new System.Drawing.Point(3, 16);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(884, 582);
+            this.metroTabControl1.Size = new System.Drawing.Size(884, 536);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -210,11 +210,11 @@ namespace CrewManagerDemo
             this.metroTabPage1.Controls.Add(this.splitContainer2);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage1.HorizontalScrollbarSize = 9;
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.metroTabPage1.Size = new System.Drawing.Size(876, 543);
+            this.metroTabPage1.Size = new System.Drawing.Size(876, 496);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Crew Plannings";
             this.metroTabPage1.UseVisualStyleBackColor = true;
@@ -236,19 +236,19 @@ namespace CrewManagerDemo
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.rosterGanttControl2);
-            this.splitContainer2.Size = new System.Drawing.Size(870, 537);
-            this.splitContainer2.SplitterDistance = 348;
+            this.splitContainer2.Size = new System.Drawing.Size(870, 490);
+            this.splitContainer2.SplitterDistance = 317;
             this.splitContainer2.TabIndex = 0;
             // 
             // metroTabPage2
             // 
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage2.HorizontalScrollbarSize = 9;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.metroTabPage2.Size = new System.Drawing.Size(876, 543);
+            this.metroTabPage2.Size = new System.Drawing.Size(876, 496);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Parameters";
             this.metroTabPage2.UseVisualStyleBackColor = true;
@@ -260,11 +260,11 @@ namespace CrewManagerDemo
             // 
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage3.HorizontalScrollbarSize = 9;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 36);
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.metroTabPage3.Size = new System.Drawing.Size(876, 543);
+            this.metroTabPage3.Size = new System.Drawing.Size(876, 496);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Summary Statistics";
             this.metroTabPage3.UseVisualStyleBackColor = true;
@@ -283,12 +283,12 @@ namespace CrewManagerDemo
             // 
             // RosterOptimizer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 686);
+            this.ClientSize = new System.Drawing.Size(1272, 633);
             this.Controls.Add(this.splitContainer1);
             this.Name = "RosterOptimizer";
-            this.Padding = new System.Windows.Forms.Padding(20, 65, 20, 20);
+            this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 18);
             this.Style = MetroFramework.MetroColorStyle.Black;
             this.StyleManager = this.metroStyleManager1;
             this.Text = "RosterOptimizer";
