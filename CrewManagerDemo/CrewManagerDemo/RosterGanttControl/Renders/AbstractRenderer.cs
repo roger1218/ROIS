@@ -158,7 +158,7 @@ namespace RosterGantt
                 g.DrawLine(pen, nowX, rect.Top, nowX, rect.Height);
         }
 
-        public virtual void DrawGroupHeader(Graphics g, Rectangle rect, int leftWidth, string title)
+        public virtual void DrawGroupHeader(Graphics g, Rectangle rect, int leftWidth, string title, int groupID)
         {
 
         }

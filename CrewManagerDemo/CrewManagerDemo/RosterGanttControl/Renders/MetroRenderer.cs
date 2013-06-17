@@ -5,7 +5,7 @@ using System.Drawing.Text;
 
 namespace RosterGantt
 {
-    class Office12Renderer : AbstractRenderer
+    class MetroRenderer : AbstractRenderer
     {
         Font baseFont;
 
@@ -58,7 +58,7 @@ namespace RosterGantt
         {
             get
             {
-                return Color.FromArgb(213, 228, 242);
+                return Color.FromArgb(255, 255, 255);
             }
         }
 
@@ -267,24 +267,23 @@ namespace RosterGantt
 
         public override void DrawGroupHeader(Graphics g, Rectangle rect, int leftWidth, string title, int groupID)
         {
-            using (Pen aPen = new Pen(Color.FromArgb(104, 147, 204)))
+            if ((groupID / 2) * 2 != groupID)
             {
-                g.DrawLine(aPen, rect.X, rect.Top, rect.Right, rect.Top);
-                g.DrawLine(aPen, rect.X, rect.Bottom - 1, rect.Right, rect.Bottom - 1);
+                Color end = InterpolateColors(Color.FromArgb(183, 208, 219), Color.White, 0.5f);
+                Color start = InterpolateColors(Color.FromArgb(149, 185, 203), Color.White, 0.3f);
+
+                using (System.Drawing.Drawing2D.LinearGradientBrush aGB = new System.Drawing.Drawing2D.LinearGradientBrush(rect, start, end, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
+                    g.FillRectangle(aGB, rect);
             }
+            else
+            {
+                Color end = InterpolateColors(Color.FromArgb(201, 201, 201), Color.White, 0.5f);
+                Color start = InterpolateColors(Color.FromArgb(181, 181, 181), Color.White, 0.3f);
 
-            rect.Width = leftWidth;
+                using (System.Drawing.Drawing2D.LinearGradientBrush aGB = new System.Drawing.Drawing2D.LinearGradientBrush(rect, start, end, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
+                    g.FillRectangle(aGB, rect);
 
-            Color end = InterpolateColors(Color.FromArgb(183, 208, 219), Color.White, 0.5f);
-            Color start = InterpolateColors(Color.FromArgb(149, 185, 203), Color.White, 0.3f);
-
-            rect.Height -= 1;
-            // Draw back
-            using (System.Drawing.Drawing2D.LinearGradientBrush aGB = new System.Drawing.Drawing2D.LinearGradientBrush(rect, start, end, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
-                g.FillRectangle(aGB, rect);
-            using (Pen aPen = new Pen(Color.FromArgb(104, 147, 204)))
-                g.DrawRectangle(aPen, rect);
-
+            }
 
             rect.X += 10;// gripWidth;
             rect.Y += 5;

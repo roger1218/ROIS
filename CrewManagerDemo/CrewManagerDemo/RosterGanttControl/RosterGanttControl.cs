@@ -572,7 +572,8 @@ namespace RosterGantt
 
             this.Controls.Add(lblTip);
 
-            this.renderer = new Office12Renderer();
+            //this.renderer = new Office12Renderer();
+            this.renderer = new MetroRenderer();
         }
 
         #endregion
@@ -816,7 +817,7 @@ namespace RosterGantt
 
                 renderer.DrawHourRange(e.Graphics, selectionRectangle, false, true);
             }
-            
+
             for (int hour = 0; hour < this.totalHour * 2; hour++)
             {
                 int x = rect.Left + (hour * halfHourWidth) - hScrollbar.Value;
@@ -853,7 +854,7 @@ namespace RosterGantt
                 return;
             }
 
-            renderer.DrawGroupHeader(e.Graphics, rect, this.leftWidth, this.cachedAppointmentGroups[groupId].GroupTitle);
+            renderer.DrawGroupHeader(e.Graphics, rect, this.leftWidth, this.cachedAppointmentGroups[groupId].GroupTitle, groupId);
 
             e.Graphics.ResetClip();
         }
