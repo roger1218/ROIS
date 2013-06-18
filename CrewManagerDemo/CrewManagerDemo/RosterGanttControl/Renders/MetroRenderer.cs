@@ -277,8 +277,10 @@ namespace RosterGantt
             }
             else
             {
-                Color end = InterpolateColors(Color.FromArgb(201, 201, 201), Color.White, 0.5f);
-                Color start = InterpolateColors(Color.FromArgb(181, 181, 181), Color.White, 0.3f);
+                //Color end = InterpolateColors(Color.FromArgb(201, 201, 201), Color.White, 0.5f);
+                //Color start = InterpolateColors(Color.FromArgb(181, 181, 181), Color.White, 0.3f);
+                Color end = InterpolateColors(Color.FromArgb(250, 250, 250), Color.White, 0.5f);
+                Color start = InterpolateColors(Color.FromArgb(240, 240, 240), Color.White, 0.3f);
 
                 using (System.Drawing.Drawing2D.LinearGradientBrush aGB = new System.Drawing.Drawing2D.LinearGradientBrush(rect, start, end, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
                     g.FillRectangle(aGB, rect);
@@ -286,7 +288,7 @@ namespace RosterGantt
             }
 
             rect.X += 10;// gripWidth;
-            rect.Y += 5;
+            rect.Y += 2;
             rect.Width -= 20;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             using (StringFormat m_Format = new StringFormat())

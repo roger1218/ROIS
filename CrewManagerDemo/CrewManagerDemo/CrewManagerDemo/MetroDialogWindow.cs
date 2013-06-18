@@ -63,12 +63,12 @@ namespace CrewManagerDemo
         private void metroButton3_Click(object sender, EventArgs e)
         {
             SaveDialogEvents(metroTextBox1.Text, metroTextBox2.Text, metroTextBox3.Text, dataTable);
-            this.Close();
+            this.Hide();
         }
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
     }
 }
