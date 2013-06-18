@@ -18,7 +18,7 @@ namespace CrewManagerDemo
         List<AppointmentGroup> tasks = new List<AppointmentGroup>();
 
         List<String> scenarios = new List<String>();
-        private MetroDialogWindow metroDialogWindow1;
+        //private MetroDialogWindow metroDialogWindow1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
 
         public RosterOptimizer()
@@ -86,10 +86,10 @@ namespace CrewManagerDemo
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if (metroDialogWindow1 == null)
-            {
-                metroDialogWindow1 = new MetroDialogWindow(this);
-            }
+            //if (metroDialogWindow1 == null)
+            //{
+            MetroDialogWindow metroDialogWindow1 = new MetroDialogWindow(this);
+            //}
 
             Point location = this.metroButton1.PointToScreen(this.metroButton1.Location);
             location.Y += 50;
