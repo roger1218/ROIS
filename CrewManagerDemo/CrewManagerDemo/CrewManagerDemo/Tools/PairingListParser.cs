@@ -29,13 +29,13 @@ namespace CrewManagerDemo
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Pairing_Number");
             dataTable.Columns.Add("Pairing_Base");
-            dataTable.Columns.Add("Pairing_Leg");
-            dataTable.Columns.Add("Pairing_Note1");
+            dataTable.Columns.Add("Pairing_Complement");
+            dataTable.Columns.Add("Pairing_Rank");
             dataTable.Columns.Add("Pairing_Start_Time");
             dataTable.Columns.Add("Pairing_End_Time");
-            dataTable.Columns.Add("Pairing_Note2");
-            dataTable.Columns.Add("Pairing_Note3");
-            dataTable.Columns.Add("Pairing_Note4");
+            dataTable.Columns.Add("Pairing_Duration");
+            dataTable.Columns.Add("Pairing_Prep_Time_1");
+            dataTable.Columns.Add("Pairing_Prep_Time_2");
 
             while ((line = reader.ReadLine()) != null)
             {
@@ -94,37 +94,37 @@ namespace CrewManagerDemo
                 return false;
             }
 
-            //StringBuilder startTime = new StringBuilder();
-            //StringBuilder endTime = new StringBuilder();
             for (int i = 0; i < fileds.Length; i++)
             {
-                //if (i < 4)
-                //{
-                //    dr[i] = fileds[i];
-                //}
-                //else if (i > 3 && i < 9)
-                //{
-                //    startTime.Append(fileds[i].ToString());
-                //}
-                //else if (i > 8  && i < 14)
-                //{
-                //    startTime.Append(fileds[i].ToString());
-                //}
-                //else
-                //{
-                //    dr[i - 9] = fileds[i];
-                //}
-
                 if (i == 4 || i == 5)
                 {
-                    string temp = fileds[i].Replace(" ", string.Empty);
-                    dr[i] = DateTime.Parse(temp);
+                    StringBuilder dateTimeString = new StringBuilder();
+
+                    string[] temp = fileds[i].Split(' ');
+                    for (int j = 0; j < temp.Length; j++)
+                    {
+                        String number = temp[j];
+                        if (number.Length < 2)
+                        {
+                            StringBuilder fullNumber = new StringBuilder(number);
+                            fullNumber.Insert(0, '0');
+                            dateTimeString.Append(fullNumber);
+                        }
+                        else
+                        {
+                            dateTimeString.Append(temp[j]);
+                        }
+                    }
+                    dateTimeString.Append("00");
+                    dr[i] = dateTimeString.ToString();
                 }
                 else
+                {
                     dr[i] = fileds[i];
+                }
 
             }
-
+                     
             dt.Rows.Add(dr);
             return true;
         }
