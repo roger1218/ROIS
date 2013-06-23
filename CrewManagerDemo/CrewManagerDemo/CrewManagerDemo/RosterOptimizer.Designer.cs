@@ -32,8 +32,6 @@ namespace CrewManagerDemo
             this.components = new System.ComponentModel.Container();
             RosterGantt.DrawTool drawTool1 = new RosterGantt.DrawTool();
             RosterGantt.DrawTool drawTool2 = new RosterGantt.DrawTool();
-            this.rosterGanttControl1 = new RosterGantt.RosterGanttControl();
-            this.rosterGanttControl2 = new RosterGantt.RosterGanttControl();
             this.metroLable1 = new MetroFramework.Controls.MetroLabel();
             this.metroLable2 = new MetroFramework.Controls.MetroLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -48,6 +46,9 @@ namespace CrewManagerDemo
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.rosterGanttControl1 = new RosterGantt.RosterGanttControl();
+            this.rosterGanttControl2 = new RosterGantt.RosterGanttControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,54 +63,6 @@ namespace CrewManagerDemo
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // rosterGanttControl1
-            // 
-            drawTool1.RosterGanttView = this.rosterGanttControl1;
-            this.rosterGanttControl1.ActiveTool = drawTool1;
-            this.rosterGanttControl1.AllowInplaceEditing = false;
-            this.rosterGanttControl1.AppointmentParallel = 1;
-            this.rosterGanttControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rosterGanttControl1.EnableTooltip = true;
-            this.rosterGanttControl1.LeftWidth = 100;
-            this.rosterGanttControl1.Location = new System.Drawing.Point(0, 0);
-            this.rosterGanttControl1.Name = "rosterGanttControl1";
-            this.rosterGanttControl1.RowPageSize = 15;
-            this.rosterGanttControl1.RowSelectMode = ((RosterGantt.RosterGanttControl.RowSelectionType)(((RosterGantt.RosterGanttControl.RowSelectionType.Header | RosterGantt.RosterGanttControl.RowSelectionType.Cell) 
-            | RosterGantt.RosterGanttControl.RowSelectionType.Appointment)));
-            this.rosterGanttControl1.SelectedAppointment = null;
-            this.rosterGanttControl1.SelectionEnd = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.SelectionGroup = 0;
-            this.rosterGanttControl1.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.Size = new System.Drawing.Size(870, 315);
-            this.rosterGanttControl1.StartTime = new System.DateTime(((long)(0)));
-            this.rosterGanttControl1.TabIndex = 0;
-            this.rosterGanttControl1.Text = "rosterGanttControl1";
-            this.rosterGanttControl1.ResolveAppointments += new RosterGantt.ResolveAppointmentsEventHandler(this.rosterGanttControl1_ResolveAppointments);
-            // 
-            // rosterGanttControl2
-            // 
-            drawTool2.RosterGanttView = this.rosterGanttControl2;
-            this.rosterGanttControl2.ActiveTool = drawTool2;
-            this.rosterGanttControl2.AllowInplaceEditing = false;
-            this.rosterGanttControl2.AppointmentParallel = 5;
-            this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rosterGanttControl2.EnableTooltip = true;
-            this.rosterGanttControl2.LeftWidth = 100;
-            this.rosterGanttControl2.Location = new System.Drawing.Point(0, 0);
-            this.rosterGanttControl2.MarkWorkTime = false;
-            this.rosterGanttControl2.Name = "rosterGanttControl2";
-            this.rosterGanttControl2.RowPageSize = 1;
-            this.rosterGanttControl2.RowSelectMode = RosterGantt.RosterGanttControl.RowSelectionType.Appointment;
-            this.rosterGanttControl2.SelectedAppointment = null;
-            this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.SelectionGroup = 0;
-            this.rosterGanttControl2.SelectionStart = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.Size = new System.Drawing.Size(870, 170);
-            this.rosterGanttControl2.StartTime = new System.DateTime(((long)(0)));
-            this.rosterGanttControl2.TabIndex = 0;
-            this.rosterGanttControl2.Text = "rosterGanttControl2";
-            this.rosterGanttControl2.ResolveAppointments += new RosterGantt.ResolveAppointmentsEventHandler(this.rosterGanttControl2_ResolveAppointments);
             // 
             // metroLable1
             // 
@@ -149,6 +102,7 @@ namespace CrewManagerDemo
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.metroButton2);
             this.groupBox1.Controls.Add(this.metroButton1);
             this.groupBox1.Controls.Add(this.metroLable1);
             this.groupBox1.Controls.Add(this.metroComboBox1);
@@ -278,6 +232,66 @@ namespace CrewManagerDemo
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Style = MetroFramework.MetroColorStyle.Black;
             // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(6, 527);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(58, 21);
+            this.metroButton2.TabIndex = 3;
+            this.metroButton2.Text = "Run";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
+            // rosterGanttControl1
+            // 
+            drawTool1.RosterGanttView = this.rosterGanttControl1;
+            this.rosterGanttControl1.ActiveTool = drawTool1;
+            this.rosterGanttControl1.AllowInplaceEditing = false;
+            this.rosterGanttControl1.AppointmentParallel = 1;
+            this.rosterGanttControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rosterGanttControl1.EnableTooltip = true;
+            this.rosterGanttControl1.LeftWidth = 100;
+            this.rosterGanttControl1.Location = new System.Drawing.Point(0, 0);
+            this.rosterGanttControl1.Name = "rosterGanttControl1";
+            this.rosterGanttControl1.RowPageSize = 15;
+            this.rosterGanttControl1.RowSelectMode = ((RosterGantt.RosterGanttControl.RowSelectionType)(((RosterGantt.RosterGanttControl.RowSelectionType.Header | RosterGantt.RosterGanttControl.RowSelectionType.Cell) 
+            | RosterGantt.RosterGanttControl.RowSelectionType.Appointment)));
+            this.rosterGanttControl1.SelectedAppointment = null;
+            this.rosterGanttControl1.SelectionEnd = new System.DateTime(((long)(0)));
+            this.rosterGanttControl1.SelectionGroup = 0;
+            this.rosterGanttControl1.SelectionStart = new System.DateTime(((long)(0)));
+            this.rosterGanttControl1.ShowNowLine = false;
+            this.rosterGanttControl1.Size = new System.Drawing.Size(870, 315);
+            this.rosterGanttControl1.StartTime = new System.DateTime(((long)(0)));
+            this.rosterGanttControl1.TabIndex = 0;
+            this.rosterGanttControl1.Text = "rosterGanttControl1";
+            this.rosterGanttControl1.ResolveAppointments += new RosterGantt.ResolveAppointmentsEventHandler(this.rosterGanttControl1_ResolveAppointments);
+            // 
+            // rosterGanttControl2
+            // 
+            drawTool2.RosterGanttView = this.rosterGanttControl2;
+            this.rosterGanttControl2.ActiveTool = drawTool2;
+            this.rosterGanttControl2.AllowInplaceEditing = false;
+            this.rosterGanttControl2.AppointmentParallel = 5;
+            this.rosterGanttControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rosterGanttControl2.EnableTooltip = true;
+            this.rosterGanttControl2.LeftWidth = 100;
+            this.rosterGanttControl2.Location = new System.Drawing.Point(0, 0);
+            this.rosterGanttControl2.MarkWorkTime = false;
+            this.rosterGanttControl2.Name = "rosterGanttControl2";
+            this.rosterGanttControl2.RowPageSize = 10;
+            this.rosterGanttControl2.RowSelectMode = RosterGantt.RosterGanttControl.RowSelectionType.Appointment;
+            this.rosterGanttControl2.SelectedAppointment = null;
+            this.rosterGanttControl2.SelectionEnd = new System.DateTime(((long)(0)));
+            this.rosterGanttControl2.SelectionGroup = 0;
+            this.rosterGanttControl2.SelectionStart = new System.DateTime(((long)(0)));
+            this.rosterGanttControl2.ShowNowLine = false;
+            this.rosterGanttControl2.Size = new System.Drawing.Size(870, 170);
+            this.rosterGanttControl2.StartTime = new System.DateTime(((long)(0)));
+            this.rosterGanttControl2.TabIndex = 0;
+            this.rosterGanttControl2.Text = "rosterGanttControl2";
+            this.rosterGanttControl2.ResolveAppointments += new RosterGantt.ResolveAppointmentsEventHandler(this.rosterGanttControl2_ResolveAppointments);
+            // 
             // RosterOptimizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -325,5 +339,6 @@ namespace CrewManagerDemo
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private MetroFramework.Controls.MetroLabel metroLable1;
         private MetroFramework.Controls.MetroLabel metroLable2;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

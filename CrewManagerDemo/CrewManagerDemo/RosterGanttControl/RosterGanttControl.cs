@@ -829,7 +829,10 @@ namespace RosterGantt
                     break;
             }
 
-            DrawAppointments(e, rect, groupId);
+            if (cachedAppointmentGroups[groupId].Count > 0)
+            {
+                DrawAppointments(e, rect, groupId);
+            }
 
             e.Graphics.ResetClip();
 

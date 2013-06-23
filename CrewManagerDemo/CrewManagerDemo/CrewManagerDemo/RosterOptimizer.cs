@@ -14,11 +14,13 @@ namespace CrewManagerDemo
 {
     public partial class RosterOptimizer : MetroFramework.Forms.MetroForm
     {
-        List<AppointmentGroup> roster = new List<AppointmentGroup>();
-        List<AppointmentGroup> tasks = new List<AppointmentGroup>();
+        List<AppointmentGroup> crew = new List<AppointmentGroup>();
+        List<AppointmentGroup> pairing = new List<AppointmentGroup>();
 
         List<String> scenarios = new List<String>();
-        //private MetroDialogWindow metroDialogWindow1;
+        DateTime _startTime = DateTime.Today.Date;
+        int _totalHour = 0;
+
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
 
         public RosterOptimizer()
@@ -31,65 +33,17 @@ namespace CrewManagerDemo
 
         private void rosterGanttControl1_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
         {
-            args.AppointmentGroups = roster;
+            args.AppointmentGroups = crew;
         }
 
         private void rosterGanttControl2_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
         {
-            args.AppointmentGroups = tasks;
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            this.openFileDialog1 = new OpenFileDialog();
-            this.openFileDialog1.Filter = "*.csv|*.CSV";
-
-            if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string fileName = this.openFileDialog1.FileName;
-                CSVHelper csvHelper = new CSVHelper(fileName);
-                DataTable dataTable = csvHelper.Read();
-            }
-            openFileDialog1.Dispose();
-
-            Invalidate();
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            AppointmentGroup ag = new AppointmentGroup();
-            ag.GroupTitle = "TASK";
-            ag.GroupId = 0;
-            
-            Random random = new Random();
-
-            for (int i = 0; i < 5; i++)
-            {
-                int startHour = random.Next(0, 21);
-                int endHour = random.Next(startHour+1, 23);
-
-                Appointment ap = new Appointment()
-                {
-                    Title = "Task " + i.ToString(),
-                    GroupId = 0,
-                    StartTime = DateTime.Today.AddHours(startHour).AddMinutes(40),
-                    EndTime = DateTime.Today.AddHours(endHour).AddMinutes(15),
-                    Percent = 0.7f,
-                    Tooltip = "Task " + i.ToString() + "\n\r" + DateTime.Today.AddHours(startHour).AddMinutes(endHour).ToShortTimeString()
-                };
-                ag.Add(ap);
-            }
-
-            tasks.Clear();
-            tasks.Add(ag);
+            args.AppointmentGroups = pairing;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            //if (metroDialogWindow1 == null)
-            //{
             MetroDialogWindow metroDialogWindow1 = new MetroDialogWindow(this);
-            //}
 
             Point location = this.metroButton1.PointToScreen(this.metroButton1.Location);
             location.Y += 50;
@@ -101,41 +55,126 @@ namespace CrewManagerDemo
             metroDialogWindow1.ShowDialog();
         }
 
-        private void newScenario(string scenarioName, string crewFileName, string pairingFileName, DataTable crewList)
+        private void newScenario(string scenarioName, string crewFileName, string pairingFileName)
         {
             this.metroComboBox1.Items.Add(scenarioName);
             this.metroComboBox1.Text = scenarioName;
             this.metroLable2.Text = scenarioName;
 
-            for (int i = 0; i < crewList.Rows.Count; i++)
-            {
-                if (i == 0) roster.Clear();
+            BuildPairingView(pairingFileName);
+            BuildCrewVeiw(crewFileName);
+        }
 
+        private void BuildPairingView(string pairingFileName)
+        {
+            PairingListParser pairingListParser = new PairingListParser(pairingFileName);
+            DataTable pairingTable = pairingListParser.Read();
+
+            AppointmentGroup ag = new AppointmentGroup();
+            ag.GroupTitle = "PAIRINGS";
+            ag.GroupId = 1;
+            string formatString = "yyyyMMddHHmmss";
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = DateTime.Now;
+            List<DateTime> startTimeList = new List<DateTime>();
+            List<DateTime> endTimeList = new List<DateTime>();
+
+            pairing.Clear();
+
+            for (int i = 0; i < pairingTable.Rows.Count; i++)
+            {
+                startTime = DateTime.ParseExact(pairingTable.Rows[i].ItemArray[4].ToString(), formatString, null);
+                endTime = DateTime.ParseExact(pairingTable.Rows[i].ItemArray[5].ToString(), formatString, null);
+                Appointment ap = new Appointment()
+                {
+                    Title = pairingTable.Rows[i].ItemArray[0].ToString(),
+                    GroupId = i + 1,
+                    StartTime = startTime,
+                    EndTime = endTime,
+                    Percent = 0.7f,
+                    Tooltip = pairingTable.Rows[i].ItemArray[1].ToString() + " " + "Flight Time " + pairingTable.Rows[i].ItemArray[6]
+                };
+
+                startTimeList.Add(startTime);
+                endTimeList.Add(endTime);
+
+                if (i < 2)
+                {
+                    //ag.Add(ap);
+                }
+
+                //ag2.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(9), endTime = DateTime.Today.AddHours(15) });
+                //ag2.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(17), endTime = DateTime.Today.AddHours(18) });
+
+            }
+            pairing.Add(ag);
+
+            TimeRange(startTimeList, endTimeList);
+
+            this.rosterGanttControl2.StartTime = _startTime;
+            if (_totalHour > 1) this.rosterGanttControl2.TotalHour = _totalHour;
+            this.rosterGanttControl2.Invalidate();
+        }
+
+        private void BuildCrewVeiw(string crewFileName)
+        {
+            CrewListParser crewListParser = new CrewListParser(crewFileName);
+            DataTable crewTable = crewListParser.Read();
+            
+            crew.Clear();
+            for (int i = 0; i < crewTable.Rows.Count; i++)
+            {
                 AppointmentGroup ag = new AppointmentGroup();
-                ag.GroupTitle = crewList.Rows[i].ItemArray[0].ToString();
+                ag.GroupTitle = crewTable.Rows[i].ItemArray[0].ToString();
                 ag.GroupId = i + 1;
 
-                //if (ag.GroupTitle.Contains("Roger"))
-                //{
-                //    Appointment ap = new Appointment()
-                //    {
-                //        Title = "Task " + i.ToString(),
-                //        GroupId = i + 1,
-                //        StartTime = DateTime.Today.AddHours(14).AddMinutes(40),
-                //        EndTime = DateTime.Today.AddHours(16).AddMinutes(15),
-                //        Percent = 0.7f,
-                //        Tooltip = "Task " + i.ToString() + "\n\r" + DateTime.Today.AddHours(14).AddMinutes(40).ToShortTimeString()
-                //    };
-                //    ag.Add(ap);
-
-                //    ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(9), endTime = DateTime.Today.AddHours(15) });
-                //    ag.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(17), endTime = DateTime.Today.AddHours(18) });
-                //}
-
-                roster.Add(ag);
+                if (i == 2)
+                {
+                    Appointment ap = new Appointment()
+                    {
+                        Title = "test",
+                        GroupId = i + 1,
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now.AddHours(1),
+                        Percent = 0.7f,
+                        Tooltip = "test"
+                    };
+                    ag.Add(ap);
+                }
+                crew.Add(ag);
             }
 
+            this.rosterGanttControl1.StartTime = _startTime;
+            if (_totalHour > 1) this.rosterGanttControl1.TotalHour = _totalHour;
+            
             this.rosterGanttControl1.Invalidate();
+        }
+
+        private void TimeRange (List<DateTime> startTimeList, List<DateTime> endTimeList)
+        {
+            DateTime minTime = DateTime.MaxValue;
+            DateTime maxTime = DateTime.MinValue;
+
+            foreach (DateTime time in startTimeList)
+            {
+                if (DateTime.Compare(time, minTime) < 0) minTime = time;
+            }
+
+            foreach (DateTime time in endTimeList)
+            {
+                if (DateTime.Compare(time, maxTime) > 0) maxTime = time;
+            }
+
+            _startTime = minTime.AddHours(-1);
+            _totalHour = ((TimeSpan)(maxTime - minTime)).Days * 24 + ((TimeSpan)(maxTime - minTime)).Hours + 1;
+
+            return;
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            //BuildPairingView("C:\\Users\\Roger\\Documents\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\Pairings.txt");
+            BuildCrewVeiw("C:\\Users\\Roger\\Documents\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\Crews.txt");
         }
     }
 }

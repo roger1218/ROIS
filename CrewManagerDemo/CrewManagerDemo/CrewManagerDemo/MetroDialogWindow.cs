@@ -32,11 +32,9 @@ namespace CrewManagerDemo
 
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
 
-        public delegate void SaveDialog (string scenarioName, string crewFileName, string pairingFileName, DataTable crewList);
+        public delegate void SaveDialog (string scenarioName, string crewFileName, string pairingFileName);
 
         public event SaveDialog SaveDialogEvents = null;
-
-        DataTable dataTable = null;
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
@@ -45,10 +43,7 @@ namespace CrewManagerDemo
 
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string fileName = this.openFileDialog1.FileName;
-                CrewListParser crewListParser = new CrewListParser(fileName);
-                dataTable = crewListParser.Read();
-                this.metroTextBox2.Text = fileName;
+                this.metroTextBox2.Text = this.openFileDialog1.FileName;
             }
 
             openFileDialog1.Dispose();
@@ -62,10 +57,7 @@ namespace CrewManagerDemo
 
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string fileName = this.openFileDialog1.FileName;
-                PairingListParser pairingListParser = new PairingListParser(fileName);
-                dataTable = pairingListParser.Read();
-                this.metroTextBox2.Text = fileName;
+                this.metroTextBox3.Text = this.openFileDialog1.FileName;
             }
 
             openFileDialog1.Dispose();
@@ -73,7 +65,7 @@ namespace CrewManagerDemo
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            SaveDialogEvents(metroTextBox1.Text, metroTextBox2.Text, metroTextBox3.Text, dataTable);
+            SaveDialogEvents(metroTextBox1.Text, metroTextBox2.Text, metroTextBox3.Text);
             this.Close();
         }
 
