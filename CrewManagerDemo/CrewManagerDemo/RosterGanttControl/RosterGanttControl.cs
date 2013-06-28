@@ -35,7 +35,10 @@ namespace RosterGantt
 
         private int rowHeight
         {
-            get { return (this.Height - topHeight - this.hScrollbar.Height) / rowPageSize; }
+            get 
+            {
+                return (this.Height - topHeight - this.hScrollbar.Height) / rowPageSize; 
+            }
         }
 
         private int appointmentGripHeight = 2;
@@ -146,7 +149,15 @@ namespace RosterGantt
         [System.ComponentModel.DefaultValue(0)]
         public int AppointmentHeight
         {
-            get { return appointmentHeight == 0 ? (this.rowHeight / appointmentParallel) - this.appointmentGripHeight : appointmentHeight; }
+            get
+            {
+                if (singleRow)
+                {
+                    appointmentParallel = 1;
+                }
+
+                return appointmentHeight == 0 ? (this.rowHeight / appointmentParallel) - this.appointmentGripHeight : appointmentHeight;
+            }
             //set { appointmentHeight = value; OnAppointmentHeightChanged(); }
         }
         private void OnAppointmentHeightChanged()
@@ -470,6 +481,24 @@ namespace RosterGantt
         }
 
         private void OnMarkWorkTimeChanged()
+        {
+            this.Invalidate();
+        }
+
+        #endregion
+
+        #region SingleRow
+
+        private bool singleRow = false;
+
+        [System.ComponentModel.DefaultValue(false)]
+        public bool SingleRow
+        {
+            get { return singleRow; }
+            set { singleRow = value; OnSingleRowChanged(); }
+        }
+
+        private void OnSingleRowChanged()
         {
             this.Invalidate();
         }
@@ -829,11 +858,6 @@ namespace RosterGantt
                     break;
             }
 
-            if (cachedAppointmentGroups[groupId].Count > 0)
-            {
-                DrawAppointments(e, rect, groupId);
-            }
-
             e.Graphics.ResetClip();
 
             rect.X = 0;
@@ -858,6 +882,11 @@ namespace RosterGantt
             }
 
             renderer.DrawGroupHeader(e.Graphics, rect, this.leftWidth, this.cachedAppointmentGroups[groupId].GroupTitle, groupId);
+
+            if (cachedAppointmentGroups[groupId].Count > 0)
+            {
+                DrawAppointments(e, rect, groupId);
+            }
 
             e.Graphics.ResetClip();
         }

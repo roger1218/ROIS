@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using RosterGantt;
 using MetroFramework;
 using MetroFramework.Forms;
+using System.Diagnostics;
 
 namespace CrewManagerDemo
 {
@@ -69,45 +70,72 @@ namespace CrewManagerDemo
         {
             PairingListParser pairingListParser = new PairingListParser(pairingFileName);
             DataTable pairingTable = pairingListParser.Read();
+            
+            //to-do
+            if (pairingTable.Rows == null)
+            {
+                return;
+            }
 
-            AppointmentGroup ag = new AppointmentGroup();
-            ag.GroupTitle = "PAIRINGS";
-            ag.GroupId = 1;
             string formatString = "yyyyMMddHHmmss";
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             List<DateTime> startTimeList = new List<DateTime>();
             List<DateTime> endTimeList = new List<DateTime>();
+            bool newAppGroup = true;
 
             pairing.Clear();
 
-            for (int i = 0; i < pairingTable.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow dr in pairingTable.Rows)
             {
-                startTime = DateTime.ParseExact(pairingTable.Rows[i].ItemArray[4].ToString(), formatString, null);
-                endTime = DateTime.ParseExact(pairingTable.Rows[i].ItemArray[5].ToString(), formatString, null);
-                Appointment ap = new Appointment()
-                {
-                    Title = pairingTable.Rows[i].ItemArray[0].ToString(),
-                    GroupId = i + 1,
-                    StartTime = startTime,
-                    EndTime = endTime,
-                    Percent = 0.7f,
-                    Tooltip = pairingTable.Rows[i].ItemArray[1].ToString() + " " + "Flight Time " + pairingTable.Rows[i].ItemArray[6]
-                };
-
+                startTime = DateTime.ParseExact(dr.ItemArray[4].ToString(), formatString, null);
+                endTime = DateTime.ParseExact(dr.ItemArray[5].ToString(), formatString, null);
                 startTimeList.Add(startTime);
                 endTimeList.Add(endTime);
-
-                if (i < 2)
-                {
-                    //ag.Add(ap);
-                }
 
                 //ag2.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(9), endTime = DateTime.Today.AddHours(15) });
                 //ag2.WorkTimes.Add(new TimeRange() { startTime = DateTime.Today.AddHours(17), endTime = DateTime.Today.AddHours(18) });
 
+                foreach (AppointmentGroup _ag in pairing)
+                {
+                    var confs = _ag.Where(a => (this.IsTimeCrossing(startTime, endTime, a.StartTime, a.EndTime)));
+                    if (confs.Count() == 0)
+                    {
+                        Appointment ap = new Appointment()
+                        {
+                            Title = dr.ItemArray[0].ToString(),
+                            GroupId = _ag.GroupId,
+                            StartTime = startTime,
+                            EndTime = endTime,
+                            Percent = 0.7f,
+                            Tooltip = dr.ItemArray[1].ToString() + " " + "Flight Time " + dr.ItemArray[6]
+                        };
+                        _ag.Add(ap);
+                        newAppGroup = false;
+                        break;
+                    }
+                }
+
+                if (newAppGroup)
+                {
+                    AppointmentGroup ag = new AppointmentGroup();
+                    ag.GroupTitle = "Pairing";
+                    ag.GroupId = i++;
+
+                    Appointment ap = new Appointment()
+                    {
+                        Title = dr.ItemArray[0].ToString(),
+                        GroupId = ag.GroupId,
+                        StartTime = startTime,
+                        EndTime = endTime,
+                        Percent = 0.7f,
+                        Tooltip = dr.ItemArray[1].ToString() + " " + "Flight Time " + dr.ItemArray[6]
+                    };
+                    ag.Add(ap);
+                    pairing.Add(ag);
+                }
             }
-            pairing.Add(ag);
 
             TimeRange(startTimeList, endTimeList);
 
@@ -121,19 +149,25 @@ namespace CrewManagerDemo
             CrewListParser crewListParser = new CrewListParser(crewFileName);
             DataTable crewTable = crewListParser.Read();
             
+            //to-do
+            if (crewTable.Rows == null)
+            {
+                return;
+            }
+
             crew.Clear();
             for (int i = 0; i < crewTable.Rows.Count; i++)
             {
                 AppointmentGroup ag = new AppointmentGroup();
                 ag.GroupTitle = crewTable.Rows[i].ItemArray[0].ToString();
-                ag.GroupId = i + 1;
+                ag.GroupId = i;
 
                 if (i == 2)
                 {
                     Appointment ap = new Appointment()
                     {
                         Title = "test",
-                        GroupId = i + 1,
+                        GroupId = i,
                         StartTime = DateTime.Now,
                         EndTime = DateTime.Now.AddHours(1),
                         Percent = 0.7f,
@@ -173,8 +207,26 @@ namespace CrewManagerDemo
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            //BuildPairingView("C:\\Users\\Roger\\Documents\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\Pairings.txt");
-            BuildCrewVeiw("C:\\Users\\Roger\\Documents\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\Crews.txt");
+            try
+            {  
+                Process myprocess = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo("C:\\WorkingDocuments\\Private\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\CRYB.exe");
+                myprocess.StartInfo = startInfo;  
+                myprocess.StartInfo.UseShellExecute = true; 
+                myprocess.Start(); 
+            }  
+            catch (Exception ex) 
+            {  
+                MessageBox.Show("Error occur" + ex.Message); 
+            }
+        }
+
+        private bool IsTimeCrossing(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
+        {
+            long total = (end1 - start1).Ticks + (end2 - start2).Ticks;
+            if (Math.Max((end1 - start2).Ticks, (end2 - start1).Ticks) > total)
+                return false;
+            else return true;
         }
     }
 }
