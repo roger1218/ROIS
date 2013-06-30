@@ -10,6 +10,8 @@ using RosterGantt;
 using MetroFramework;
 using MetroFramework.Forms;
 using System.Diagnostics;
+using System.Reflection;
+using System.IO;
 
 namespace CrewManagerDemo
 {
@@ -208,9 +210,10 @@ namespace CrewManagerDemo
         private void metroButton2_Click(object sender, EventArgs e)
         {
             try
-            {  
+            {
+                DirectoryInfo[] di = (Directory.GetParent(Assembly.GetEntryAssembly().Location).Parent.Parent.GetDirectories("External"))[0].GetDirectories("crew");
                 Process myprocess = new Process();
-                ProcessStartInfo startInfo = new ProcessStartInfo("C:\\WorkingDocuments\\Private\\GitHub\\ROIS\\CrewManagerDemo\\CrewManagerDemo\\CrewManagerDemo\\External\\crew\\CRYB.exe");
+                ProcessStartInfo startInfo = new ProcessStartInfo(di[0].FullName + "\\CRYB.exe");
                 myprocess.StartInfo = startInfo;  
                 myprocess.StartInfo.UseShellExecute = true; 
                 myprocess.Start(); 
@@ -227,6 +230,14 @@ namespace CrewManagerDemo
             if (Math.Max((end1 - start2).Ticks, (end2 - start1).Ticks) > total)
                 return false;
             else return true;
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo[] di = (Directory.GetParent(Assembly.GetEntryAssembly().Location).Parent.Parent.GetDirectories("External"))[0].GetDirectories("crew");
+
+            BuildPairingView(di[0].FullName + "\\Pairings.txt");
+            BuildCrewVeiw(di[0].FullName + "\\Crews.txt");
         }
     }
 }
